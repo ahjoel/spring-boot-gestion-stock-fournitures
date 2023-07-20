@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>STOCKFB - Gestion de stock</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <th:block th:replace="fragments/_css.html::css"></th:block>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a th:href="@{/}">StockFB</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="#about">A Propos</a></li>
+          <li><a class="nav-link scrollto" href="#services">Fonctionnalités</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#about">Démarrez</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Gérer au mieux vos Fournitures de Bureaux</h1>
+          <h2>Spécialement conçu pour fluidifier les process de gestion de stock des fournitures de bureau en entreprises</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started scrollto">Démarrez</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img th:src="@{/assets/img/hero-img.png}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>A Propos</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p>
+              Bienvenue sur STOCKFB, votre solution de gestion de stock des fournitures de bureaux.
+              Notre mission est de simplifier et d'optimiser la gestion de vos stocks, vous permettant ainsi de vous concentrer sur l'essentiel : faire prospérer votre entreprise.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Eviter les ruptures de stock</li>
+              <li><i class="ri-check-double-line"></i> Optimiser vos achats</li>
+              <li><i class="ri-check-double-line"></i> Automatiser les processus de réapprovisionnement</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              La confidentialité et la sécurité de vos données sont notre priorité absolue. 
+              Nous mettons en place des mesures rigoureuses pour protéger vos informations et nous sommes conformes aux réglementations en vigueur 
+              en matière de protection des données.
+            </p>
+            <!--<a href="#" class="btn-learn-more">Learn More</a>-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+            <div class="content">
+              <h3>Pourquoi utilisez le logiciel de gestion de stock des fournitures de bureaux <strong>STOCKFB</strong></h3>
+              <p>
+                
+              </p>
+            </div>
+
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Eviter les ruptures de stock <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                    <p>
+                      En ayant une visibilité précise sur vos stocks de fournitures de bureaux actuels, il sera plus aisé suivre l'évolution et les mouvements des fournitures en stock.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Optimiser vos achats <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                      L'identification des articles surstockés ou obsolètes permettra de réduire les coûts inutiles.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Automatiser les processus de réapprovisionnement <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                      Gain de temps précieux en augmentant l'efficacité de vos activités.
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+
+
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" th:style="'background-image: url(assets/img/why-us.png)'" data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Fonctionnalités</h2>
+          <p>Ces fonctionnalités ne représentent qu'un aperçu des possibilités offertes par STOCKFB. 
+            Notre logiciel est continuellement amélioré et mis à jour pour répondre aux besoins changeants de la gestion de stock des fournitures de bureaux.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="">Suivi en temps réel de l'inventaire</a></h4>
+              <p>Vous pouvez voir instantanément combien d'articles vous avez en stock, ce qui vous évite les surprises et les ruptures de stock.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Gestion des commandes et des livraisons</a></h4>
+              <p>Vous pouvez créer des bons de commande, suivre les livraisons et recevoir des notifications pour vous informer de l'état de chaque commande.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Génération de rapports détaillés</a></h4>
+              <p>Vous pouvez obtenir des informations détaillées sur les articles les plus vendus, les niveaux de stock actuels, 
+                les coûts d'approvisionnement, les tendances d'utilisation, etc. Ces rapports vous aident à prendre des décisions éclairées pour optimiser votre gestion de stock.</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-layer"></i></div>
+              <h4><a href="">Historique des mouvements de stock</a></h4>
+              <p>STOCKFB enregistre toutes les entrées et sorties de stock, vous offrant ainsi un historique complet des mouvements de vos fournitures de bureaux.</p>
+            </div>
+          </div>
+          
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>Démo</h3>
+            <p>Notre logiciel est continuellement amélioré et mis à jour pour répondre aux besoins changeants de la gestion de stock des fournitures de bureaux. 
+              Avec STOCKFB, vous disposez de tous les outils nécessaires pour gérer efficacement votre inventaire et optimiser votre entreprise.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Cliquez pour Démo</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <p>
+            Notre objectif est de vous aider à tirer le meilleur parti de STOCKFB et à optimiser votre gestion de stock des fournitures de bureaux.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Pourquoi devrais-je utiliser STOCKFB pour la gestion de mon stock de fournitures de bureaux ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  STOCKFB vous offre une solution complète et efficace pour gérer vos stocks. Grâce à ses fonctionnalités avancées et son interface conviviale, vous pouvez éviter les ruptures de stock, réduire les coûts d'approvisionnement, et optimiser vos niveaux de stock pour améliorer l'efficacité de votre entreprise.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Quels types d'entreprises peuvent bénéficier de STOCKFB ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  STOCKFB convient à toutes les entreprises, grandes ou petites, qui gèrent des fournitures de bureaux. Que vous soyez une PME, une entreprise en croissance ou une grande entreprise, STOCKFB peut être adapté à vos besoins spécifiques.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Puis-je obtenir une démonstration gratuite de STOCKFB avant de m'engager ?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Absolument ! Nous proposons une démonstration gratuite de STOCKFB pour vous permettre de découvrir ses fonctionnalités et son interface conviviale. Contactez-nous à partir du formulaire en bas de cette page.
+                </p>
+              </div>
+            </li>
+
+        
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">STOCKFB peut-il être intégré à nos systèmes existants ?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Oui, STOCKFB est conçu pour être facilement intégré à d'autres systèmes que vous utilisez déjà, tels que votre système de comptabilité ou votre plateforme d'e-commerce, pour assurer une synchronisation transparente des données.
+                </p>
+              </div>
+            </li>
+
+            
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p> N'hésitez pas à nous contacter si vous avez d'autres questions ou besoins d'informations supplémentaires.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" style="margin-left: 250px;">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Nom</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Objet</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Envoyez Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>STOCKFB</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://www.linkedin.com/in/jo%C3%ABl-aholou-1171a5174/">KAJ</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <th:block th:replace="fragments/_js.html::js"></th:block>
+
+</body>
+
+</html>
