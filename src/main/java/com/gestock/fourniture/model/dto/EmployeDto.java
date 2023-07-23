@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UtilisateurDto {
-    private String code;
-    private String nom;
-    private String prenom;
-    private String service;
-    private String etat="ACTIVE";
+public class EmployeDto {
+    private String codeEmp;
+    private String nomEmp;
+    private String prenomEmp;
+    private String serviceEmp;
+    private String etat;
 }

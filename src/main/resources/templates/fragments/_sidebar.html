@@ -1,0 +1,130 @@
+<html lang="en">
+
+<th:block th:fragment="sidebar">
+
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-dice-d6"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">Stock-FB<sup></sup></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard
+    <li class="nav-item active">
+      <a class="nav-link" th:href="@{/dashboard}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Accueil</span></a>
+    </li>-->
+
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{/dashboard}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Accueil</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" th:href="@{/employe}">
+        <i class="fas fa-th"></i>
+        <span>Employe</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+        <i class="fas fa-th"></i>
+        <span>Catégorie</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="fourniture.html">
+        <i class="fas fa-box"></i>
+        <span>Fourniture</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="commande.html">
+        <i class="fas fa-list"></i>
+        <span>Commande</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+        <i class="far fa-arrow-alt-circle-right"></i>
+        <span>Livraison</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+        <i class="far fa-arrow-alt-circle-left"></i>
+        <span>Sortie</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a class="nav-link" href="tables.html">
+        <i class="far fa-arrow-alt-circle-right"></i>
+        <i class="far fa-arrow-alt-circle-left"></i>
+        <span>Situation stock</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Statistiques
+    </div>
+
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Etats Livraison</span></a>
+    </li>
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Etats Sortie</span></a>
+    </li>
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Etats Livraison-Sortie</span></a>
+    </li>
+
+    <!-- Nav Item -->
+    <li class="nav-item">
+      <a class="nav-link" href="charts.html">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Etats mensuel Stock</span></a>
+    </li>
+
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+
+  </ul>
+
+
+</th:block>
+</html>
