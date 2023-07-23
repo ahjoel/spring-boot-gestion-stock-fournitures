@@ -6,18 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+import java.util.Date;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Utilisateur {
+public class Livraison {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String code;
-    private String nom;
-    private String prenom;
-    private String service;
-    private String etat="ACTIVE";
+    private String codeLiv;
+    private Date dateLiv;
+    private Double tvaLiv;
+    private String fournisseurLiv;
+
+    @OneToMany(mappedBy = "livraison", fetch = FetchType.LAZY)
+    private Collection<LigneLivraison> ligneLivraisons;
+
 }
