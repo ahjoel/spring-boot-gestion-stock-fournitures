@@ -21,7 +21,7 @@ public class EmployeService {
         return employeRepository.findAll().stream().map(employeMapper::toDto).collect(Collectors.toList());
     }
 
-    public Long ajouterVoyage(EmployeDto employeDto){
+    public Long ajouterEmploye(EmployeDto employeDto){
         checkCodeEmpAlreadyUsed(employeDto);
         return employeRepository.save(employeMapper.toEntity(employeDto)).getId();
     }
