@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class EmployeController {
@@ -15,7 +17,7 @@ public class EmployeController {
     @Autowired
     private EmployeService employeService;
 
-    @GetMapping("/employes")
+    @GetMapping("/lemployes")
     public String listeEmploye(Model model) {
         var employes = employeService.listEmployes();
         model.addAttribute("employes",employes);
@@ -42,6 +44,6 @@ public class EmployeController {
 
         employeService.ajouterEmploye(employeDto);
 
-        return "redirect:employes";
+        return "redirect:lemployes";
     }
 }

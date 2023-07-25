@@ -1,6 +1,7 @@
 package com.gestock.fourniture.service;
 
 import com.gestock.fourniture.model.dto.EmployeDto;
+import com.gestock.fourniture.model.entities.Employe;
 import com.gestock.fourniture.repository.EmployeRepository;
 import com.gestock.fourniture.service.mapper.EmployeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeService {
+
     @Autowired
     private EmployeRepository employeRepository;
 
@@ -31,4 +33,6 @@ public class EmployeService {
             throw new RuntimeException("Code 5268 : Il existe déjà un employe avec ce code");
         }
     }
+
+
 }

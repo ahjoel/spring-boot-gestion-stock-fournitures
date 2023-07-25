@@ -75,14 +75,14 @@
                                     </tfoot>
                                     <tbody>
                                     <tr th:each="employe : ${employes}">
-                                        <td>Nan</td>
+                                        <td th:text="${employeStat.index + 1}"></td>
                                         <td th:text="${employe.codeEmp}"></td>
                                         <td th:text="${employe.nomEmp}"></td>
                                         <td th:text="${employe.prenomEmp}"></td>
                                         <td th:text="${employe.serviceEmp}"></td>
                                         <td th:text="${employe.etat}"></td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-circle btn-sm">
+                                            <a th:href="@{'/employe/' + ${employe.codeEmp}}" class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pen"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-circle btn-sm">
