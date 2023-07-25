@@ -58,6 +58,7 @@
                                         <th>Nom Emp</th>
                                         <th>Prénom(s) Emp</th>
                                         <th>Service</th>
+                                        <th>Etat</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -68,16 +69,18 @@
                                         <th>Nom Emp</th>
                                         <th>Prénom(s) Emp</th>
                                         <th>Service</th>
+                                        <th>Etat</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    <tr>
-                                        <td>Agrafes</td>
-                                        <td>Bureau</td>
-                                        <td>Boîte</td>
-                                        <td>5</td>
-                                        <td>19/02/2023</td>
+                                    <tr th:each="employe : ${employes}">
+                                        <td>Nan</td>
+                                        <td th:text="${employe.codeEmp}"></td>
+                                        <td th:text="${employe.nomEmp}"></td>
+                                        <td th:text="${employe.prenomEmp}"></td>
+                                        <td th:text="${employe.serviceEmp}"></td>
+                                        <td th:text="${employe.etat}"></td>
                                         <td>
                                             <a href="#" class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pen"></i>

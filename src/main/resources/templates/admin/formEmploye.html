@@ -55,6 +55,7 @@
                                 th:object="${employeDTO}"
                             >
                                 <div class="form-row">
+                                    <input type="hidden" class="form-control" name="etat" th:field="*{etat}">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Code Employe</label>
                                         <input type="text" class="form-control" name="codeEmp" th:field="*{codeEmp}" id="inputEmail4" placeholder="Code Employe">
@@ -72,13 +73,13 @@
                                     <div class="form-group col-md-6">
                                         <label for="inputState">Service</label>
                                         <select id="inputState" name="serviceEmp" th:field="*{serviceEmp}" class="form-control">
-                                            <option th:value="''" th:text="Choisir..."selected>Choisir...</option>
-                                            <option th:value="'APPRO-STOCK'" th:text="APPRO-STOCK">APPRO-STOCK</option>
-                                            <option th:value="'ADMINISTRATIF'" th:text="ADMINISTRATIF">ADMINISTRATIF</option>
-                                            <option th:value="'COMPTABILITE'" th:text="COMPTABILITE">COMPTABILITE</option>
-                                            <option th:value="'EXPLOITATION'" th:text="EXPLOITATION">EXPLOITATION</option>
-                                            <option th:value="'INFORMATIQUE'" th:text="INFORMATIQUE">INFORMATIQUE</option>
-                                            <option th:value="'COORDINATION ET ASSISTANCE'" th:text="COORDINATION ET ASSISTANCE">COORDINATION ET ASSISTANCE</option>
+                                            <option th:value="''" th:text="Choisir...">Choisir...</option>
+                                            <option th:value="'APPRO-STOCK'" th:text="APPRO-STOCK"></option>
+                                            <option th:value="'ADMINISTRATIF'" th:text="ADMINISTRATIF"></option>
+                                            <option th:value="'COMPTABILITE'" th:text="COMPTABILITE"></option>
+                                            <option th:value="'EXPLOITATION'" th:text="EXPLOITATION"></option>
+                                            <option th:value="'INFORMATIQUE'" th:text="INFORMATIQUE"></option>
+                                            <option th:value="'COORDINATION-ASSISTANCE'" th:text="COORDINATION-ASSISTANCE"></option>
                                         </select>
                                     </div>
                                 </div>

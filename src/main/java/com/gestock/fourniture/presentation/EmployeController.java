@@ -16,7 +16,9 @@ public class EmployeController {
     private EmployeService employeService;
 
     @GetMapping("/employes")
-    public String dashboard(Model model) {
+    public String listeEmploye(Model model) {
+        var employes = employeService.listEmployes();
+        model.addAttribute("employes",employes);
         return "admin/listeEmploye";
     }
 
