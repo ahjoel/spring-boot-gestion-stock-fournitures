@@ -22,7 +22,7 @@ public class EmployeController {
     public String listeEmploye(Model model) {
         var employes = employeService.listEmployes();
         model.addAttribute("employes",employes);
-        return "admin/listeEmploye";
+        return "admin/employe/listeEmploye";
     }
 
     @GetMapping("/formemploye")
@@ -37,7 +37,7 @@ public class EmployeController {
 
         model.addAttribute("employeDTO", employeDTO);
 
-        return "admin/formEmploye";
+        return "admin/employe/formEmploye";
     }
 
     @PostMapping("/enregistreremploye")
@@ -57,7 +57,7 @@ public class EmployeController {
 
         model.addAttribute("employeDto", employeDtoFound);
 
-        return "admin/formEditEmploye";
+        return "admin/employe/formEditEmploye";
     }
 
     private EmployeDto getEmployeDtoCodeEmpExist(String codeEmp) {
@@ -78,7 +78,7 @@ public class EmployeController {
 
         if (employeDtoFound == null) {
             redirectAttributes.addFlashAttribute("message", "Code 257 : le code employe que vous voulez modifier n'existe pas");
-            return "admin/formEditEmploye";
+            return "admin/employe/formEditEmploye";
         }
 
         try {
@@ -88,15 +88,14 @@ public class EmployeController {
         } catch (RuntimeException e) {
             String errorMessage = "Une erreur s'est produite lors de la modification de l'employe - " + e.getMessage();
             redirectAttributes.addFlashAttribute("message", errorMessage);
-            return "admin/formEditEmploye";
+            return "admin/employe/formEditEmploye";
         }
     }
 
-    // Traitement de la suppression du voyage
+    // Traitement de la suppression de l'employe
     @PostMapping("employe/delete/{code}")
-    public String deleteVoyage(@PathVariable("code") String codeEmp, RedirectAttributes redirectAttributes) {
+    public String deleteEmploye(@PathVariable("code") String codeEmp, RedirectAttributes redirectAttributes) {
         try {
-            // Appelez la fonction de service pour supprimer le voyage
             employeService.supprimerEmploye(codeEmp);
             redirectAttributes.addFlashAttribute("message", "Suppression de l'employé " + codeEmp + " effectuée");
         } catch (RuntimeException e) {

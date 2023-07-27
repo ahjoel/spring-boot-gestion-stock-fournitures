@@ -42,7 +42,7 @@ public class EmployeService {
         Employe employeFound = employeRepository.findEmployeByCodeEmp(employe.getCodeEmp())
                 .orElseThrow(() -> new RuntimeException("Code 257 : l'employé que vous voulez modifier n'existe pas"));
 
-        // Convertir l'entité Voyage en VoyageDto et le renvoyer
+        // Convertir l'entité Employe en EmployeDto et le renvoyer
         return employeMapper.toDto(employeFound);
     }
 
@@ -50,11 +50,11 @@ public class EmployeService {
         // Convertir EmployeDto en entité Employe
         Employe employe = employeMapper.toEntity(employeDto);
 
-        // Recherchez le voyage par son nom en utilisant le Repository
+        // Recherchez l'employe par son code en utilisant le Repository
         Employe employeFound = employeRepository.findEmployeByCodeEmp(employe.getCodeEmp())
                 .orElseThrow(() -> new RuntimeException("Code 257 : l'employé que vous voulez modifier n'existe pas"));
 
-        //Rassemble tout ce qu'il a envoyé à modifier dans voyageDto, le passe a l'entite voyage
+        //Rassemble tout ce qu'il a envoyé à modifier dans employeDto, le passe a l'entite employe
         employeMapper.copy(employeDto, employeFound);
 
         // Sauvegarder la modification en base de données
