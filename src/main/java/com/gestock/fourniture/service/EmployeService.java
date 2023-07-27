@@ -34,5 +34,43 @@ public class EmployeService {
         }
     }
 
+    public EmployeDto getEmployeByCodeEmp(EmployeDto employeDto) {
+        // Convertir EmployeDto en entité Employe
+        Employe employe = employeMapper.toEntity(employeDto);
+
+        // Recherchez le voyage par son nom en utilisant le Repository
+        Employe employeFound = employeRepository.findEmployeByCodeEmp(employe.getCodeEmp())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'employé que vous voulez modifier n'existe pas"));
+
+        // Convertir l'entité Voyage en VoyageDto et le renvoyer
+        return employeMapper.toDto(employeFound);
+    }
+
+    public boolean modifierEmploye(EmployeDto employeDto){
+        // Convertir EmployeDto en entité Employe
+        Employe employe = employeMapper.toEntity(employeDto);
+
+        // Recherchez le voyage par son nom en utilisant le Repository
+        Employe employeFound = employeRepository.findEmployeByCodeEmp(employe.getCodeEmp())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'employé que vous voulez modifier n'existe pas"));
+
+        //Rassemble tout ce qu'il a envoyé à modifier dans voyageDto, le passe a l'entite voyage
+        employeMapper.copy(employeDto, employeFound);
+
+        // Sauvegarder la modification en base de données
+        employeRepository.save(employeFound);
+
+        return true;
+    }
+
+    public boolean supprimerEmploye(String codeEmp){
+        Employe employe = employeRepository.findEmployeByCodeEmp(codeEmp)
+                .orElseThrow(()->new RuntimeException("Code 256 : l'employe que vous voulez supprimer n'existe pas"));
+
+        employeRepository.deleteById(employe.getId());
+
+        return true;
+    }
+
 
 }

@@ -36,9 +36,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show text-left message col-md-4 ml-auto"
+                         role="alert">
+                        [[${message}]]
+                        <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Employe</h1>
+
+
                         <a th:href="@{/lemployes}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-plus fa-sm text-white-50"></i> Liste Employe</a>
                     </div>
@@ -46,31 +56,36 @@
                     <!-- Basic Card Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Employe</h6>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-0 font-weight-bold text-primary">Modification de Employe - <span th:text="${employeDto.codeEmp}"></span></h6>
+                                </div>
+                                <div class="col text-right">
+                                    <a id="btnDelete" title="Delete this employee" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#confirmModal">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <form
                                 th:method="post"
-                                th:action="@{/enregistreremploye}"
-                                th:object="${employeDTO}"
+                                th:action="@{/employe/{code}/modify(code=${employeDto.codeEmp})}"
+                                th:object="${employeDto}"
                             >
                                 <div class="form-row">
                                     <input type="hidden" class="form-control" name="etat" th:field="*{etat}">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Code Employe</label>
-                                        <input type="text" class="form-control" name="codeEmp" required th:field="*{codeEmp}" id="inputEmail4" placeholder="Code Employe">
-                                    </div>
-                                    <div class="form-group col-md-6">
+                                    <input type="hidden" class="form-control" name="etat" th:field="*{codeEmp}">
+
+                                    <div class="form-group col-md-3">
                                         <label for="inputPassword6">Nom Employe</label>
-                                        <input type="text" class="form-control" name="nomEmp" required th:field="*{nomEmp}" id="inputPassword6" placeholder="Nom Employe">
+                                        <input type="text" class="form-control" name="nomEmp" th:field="*{nomEmp}" required id="inputPassword6" placeholder="Nom Employe">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label for="inputPassword5">Prenom Employe</label>
-                                        <input type="text" class="form-control" name="prenomEmp" required th:field="*{prenomEmp}" id="inputPassword5" placeholder="Prenom Employe">
+                                        <input type="text" class="form-control" name="prenomEmp" th:field="*{prenomEmp}" required id="inputPassword5" placeholder="Prenom Employe">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-5">
                                         <label for="inputState">Service</label>
                                         <select id="inputState" name="serviceEmp" th:field="*{serviceEmp}" required class="form-control">
                                             <option th:value="''" th:text="Choisir...">Choisir...</option>
@@ -111,25 +126,31 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Modal -->
+    <div class="modal fade text-center" id="confirmModal">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">Confirmation de Suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
-                </div>
+                <form th:action="@{'/employe/delete/' + ${employeDto.codeEmp}}" method="post">
+                    <div class="modal-body">
+                        <span id="confirmText">Voulez-vous supprimer <span th:text="${employeDto.codeEmp} + ' '+ ${employeDto.nomEmp}"></span> ?</span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Yes">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <!-- End Modal -->
 
     <th:block th:replace="fragments/_js_admin.html::js"></th:block>
 </body>

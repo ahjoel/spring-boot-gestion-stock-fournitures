@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Éditer un employe</title>
+</head>
+<body>
+
+<p th:if="${errorMessage}" style="color: red;" th:text="${errorMessage}"></p>
+
+<h2>Éditer le voyage : <span th:text="${employeDto.nomEmp}"></span></h2>
+
+<form action="#" th:action="@{/employe/{code}/edit(code=${employeDto.codeEmp})}" th:object="${employeDto}" method="post">
+    <input type="text" th:field="*{codeEmp}" />
+
+    <label>Nom:</label>
+    <input type="text" th:field="*{nomEmp}" />
+    <br />
+
+    <label>Prenom:</label>
+    <input type="text" th:field="*{prenomEmp}" />
+    <br />
+
+    <label>Service:</label>
+    <input type="text" th:field="*{serviceEmp}"/>
+    <br />
+
+    <input type="submit" value="Enregistrer" />
+</form>
+</body>
+</html>

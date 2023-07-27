@@ -36,6 +36,14 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show text-left message col-md-4 ml-auto"
+                         role="alert">
+                        [[${message}]]
+                        <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Employe</h1>
@@ -70,7 +78,7 @@
                                         <th>Prénom(s) Emp</th>
                                         <th>Service</th>
                                         <th>Etat</th>
-                                        <th>Actions</th>
+                                        <th>Action</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -82,13 +90,14 @@
                                         <td th:text="${employe.serviceEmp}"></td>
                                         <td th:text="${employe.etat}"></td>
                                         <td>
-                                            <a th:href="@{'/employe/' + ${employe.codeEmp}}" class="btn btn-info btn-circle btn-sm">
+                                            <a th:href="@{'/employe/' + ${employe.codeEmp} + '/edit'}" class="btn btn-info btn-circle btn-sm">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                            <a th:href="@{'/employe/' + ${employe.codeEmp} + '/edit'}" title="Delete this employee" class="btn btn-danger btn-circle btn-sm">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
+
                                     </tr>
 
                                     </tbody>
@@ -99,6 +108,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
 
             </div>
             <!-- End of Main Content -->
@@ -139,6 +149,8 @@
     </div>
 
     <th:block th:replace="fragments/_js_admin.html::js"></th:block>
+
+
 </body>
 
 </html>

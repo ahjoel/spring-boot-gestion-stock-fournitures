@@ -20,5 +20,19 @@
   <!-- Page level custom scripts -->
   <script th:src="@{/assets/js/demo/datatables-demo.js}"></script>
 
+  <script type="text/javascript">
+      $(document).ready(function () {
+        $(".btn-delete").on("click", function (e) {
+          e.preventDefault();
+          alert('ok');
+          link = $(this);
+
+          employeNom = link.attr("employeNom");
+          $("#yesBtn").attr("href", link.attr("href"));
+          $("#confirmText").html("Do you want to delete the Employe \<strong\>" + employeNom + "\<\/strong\>?");
+          $("#confirmModal").modal();
+        });
+      });
+  </script>
 </th:block>
 </html>
