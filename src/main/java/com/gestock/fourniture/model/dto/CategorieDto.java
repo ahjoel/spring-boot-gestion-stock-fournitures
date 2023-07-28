@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CategorieDto {
+    private Long id;
     private String codeCat;
     private String nomCat;
     private String descriptionCat;

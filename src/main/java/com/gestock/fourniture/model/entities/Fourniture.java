@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,8 +23,8 @@ public class Fourniture {
     private String nomFour;
     private String mesureFour;
     private String qteMinFour;
-    private Date dateCreation;
-    private Date dateModification;
+    private LocalDate dateCreation;
+    private LocalDate dateModification;
     private String etatFour;
 
     @ManyToOne(fetch = FetchType.LAZY)
