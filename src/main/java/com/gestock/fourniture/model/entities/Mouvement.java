@@ -13,28 +13,34 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Mouvement")
 public class Mouvement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "code")
     private String codeMouv;
+    @Column(name = "date_mouvement")
     private Date datemouv;
+    @Column(name = "date_inventaire")
     private Date dateInventaire;
+    @Column(name = "qte")
     private Double qteMouv;
+    @Column(name = "nature")
     private String natureMouv;
+    @Column(name = "etat")
     private String etatMouv;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idlignelivraison", nullable = true)
+    @JoinColumn(name = "lignelivraison_id", nullable = true)
     private LigneLivraison ligneLivraison;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idsortie", nullable = true)
+    @JoinColumn(name = "sortie_id", nullable = true)
     private Sortie sortie;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idfourniture", nullable = false)
+    @JoinColumn(name = "fourniture_id", nullable = false)
     private Fourniture fourniture;
-
 
 }

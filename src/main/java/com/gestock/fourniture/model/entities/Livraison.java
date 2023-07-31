@@ -14,13 +14,18 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Livraison")
 public class Livraison {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "code")
     private String codeLiv;
+    @Column(name = "date_livraison")
     private Date dateLiv;
+    @Column(name = "tva")
     private Double tvaLiv;
+    @Column(name = "fournisseur")
     private String fournisseurLiv;
 
     @OneToMany(mappedBy = "livraison", fetch = FetchType.LAZY)

@@ -13,19 +13,22 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "LigneCommande")
 public class LigneCommande {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "qte")
     private Double qteLigneCom;
+    @Column(name = "etat")
     private String etatLigneCom;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idfourniture", nullable = false)
+    @JoinColumn(name = "fourniture_id", nullable = false)
     private Fourniture fourniture;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idcommande", nullable = false)
+    @JoinColumn(name = "commande_id", nullable = false)
     private Commande commande;
 
     @OneToMany(mappedBy = "ligneCommande", fetch = FetchType.LAZY)

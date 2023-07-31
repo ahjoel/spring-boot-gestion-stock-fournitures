@@ -13,14 +13,20 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Employe")
 public class Employe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "code")
     private String codeEmp;
+    @Column(name = "nom")
     private String nomEmp;
+    @Column(name = "prenom")
     private String prenomEmp;
+    @Column(name = "service")
     private String serviceEmp;
+    @Column(name = "etat")
     private String etat="ACTIVE";
 
     @OneToMany(mappedBy = "employe", fetch = FetchType.LAZY)

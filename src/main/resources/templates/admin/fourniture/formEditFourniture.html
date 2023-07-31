@@ -46,11 +46,11 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Categorie</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Fourniture</h1>
 
 
-                        <a th:href="@{/lemployes}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-plus fa-sm text-white-50"></i> Liste Categorie</a>
+                        <a th:href="@{/fournitures}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-plus fa-sm text-white-50"></i> Liste Fourniture</a>
                     </div>
 
                     <!-- Basic Card Example -->
@@ -58,10 +58,10 @@
                         <div class="card-header py-3">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0 font-weight-bold text-primary">Modification de Categorie - <span th:text="${categorieDto.nomCat}"></span></h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Modification de Fourniture - <span th:text="${fournitureDTO.nomFour}"></span></h6>
                                 </div>
                                 <div class="col text-right">
-                                    <a id="btnDelete" title="Delete this categorie" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#confirmModal">
+                                    <a id="btnDelete" title="Delete this fourniture" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#confirmModal">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
@@ -70,22 +70,42 @@
                         <div class="card-body">
                             <form
                                 th:method="post"
-                                th:action="@{/categorie/{code}/modify(code=${categorieDto.codeCat})}"
-                                th:object="${categorieDto}"
+                                th:action="@{/fourniture/{code}/modify(code=${fournitureDTO.codeFour})}"
+                                th:object="${fournitureDTO}"
                             >
-                                <div class="form-row">
-                                    <input type="hidden" class="form-control" th:field="*{codeCat}">
+                                <input type="hidden" class="form-control" th:field="*{codeFour}">
+                                <input type="hidden" class="form-control" name="etatFour" th:field="*{etatFour}">
+                                <input type="hidden" class="form-control" name="dateCreation" th:field="*{dateCreation}">
+                                <input type="hidden" class="form-control" name="dateModification" th:field="*{dateModification}">
 
-                                    <div class="form-group col-md-3">
-                                        <label for="inputPassword6">Nom Categorie</label>
-                                        <input type="text" class="form-control" name="nomCat" th:field="*{nomCat}" required id="inputPassword6" placeholder="Nom Categorie">
-                                    </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword5">Description Categorie</label>
-                                        <input type="text" class="form-control" name="descriptionCat" th:field="*{descriptionCat}" required id="inputPassword5" placeholder="Description Categorie">
+                                        <label for="inputPassword6">Nom Fourniture</label>
+                                        <input type="text" class="form-control" name="nomFour" required th:field="*{nomFour}" id="inputPassword6" placeholder="Nom Fourniture">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputPassword7">Qte Min Fourniture</label>
+                                        <input type="text" class="form-control" name="qteMinFour" required th:field="*{qteMinFour}" id="inputPassword7" placeholder="Qte Min Fourniture">
                                     </div>
                                 </div>
-
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="inputPassword9">Mesure Fourniture</label>
+                                        <select th:field="*{mesureFour}" name="mesureFour" id="inputPassword9" required class="form-control">
+                                            <option th:value="''" th:text="Choisir...">Choisir...</option>
+                                            <option th:value="'CARTON'" th:text="CARTON"></option>
+                                            <option th:value="'BOITE_10'" th:text="BOITE_10"></option>
+                                            <option th:value="'BOITE_20'" th:text="BOITE_20"></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputState8">Categorie</label>
+                                        <select id="inputState8" th:field="*{categorie.id}" name="categorie.id" required class="form-control">
+                                            <option th:value="''" th:text="Choisir...">Choisir...</option>
+                                            <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.nomCat}"></option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <button type="reset" class="btn btn-warning">Annuler</button>
                                 <button type="submit" class="btn btn-primary">Enregistrer</button>
                             </form>
@@ -123,9 +143,9 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form th:action="@{'/categorie/delete/' + ${categorieDto.codeCat}}" method="post">
+                <form th:action="@{'/fourniture/delete/' + ${fournitureDTO.codeFour}}" method="post">
                     <div class="modal-body">
-                        <span id="confirmText">Voulez-vous supprimer <span th:text="${categorieDto.codeCat} + ' '+ ${categorieDto.nomCat}"></span> ?</span>
+                        <span id="confirmText">Voulez-vous supprimer <span th:text="${fournitureDTO.codeFour} + ' '+ ${fournitureDTO.nomFour}"></span> ?</span>
                     </div>
 
                     <div class="modal-footer">

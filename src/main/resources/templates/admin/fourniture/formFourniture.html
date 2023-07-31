@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="form-row">
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label for="inputPassword9">Mesure Fourniture</label>
                                         <select name="serviceEmp" th:field="*{mesureFour}" id="inputPassword9" required class="form-control">
                                             <option th:value="''" th:text="Choisir...">Choisir...</option>
@@ -92,9 +92,9 @@
                                             <option th:value="'BOITE_20'" th:text="BOITE_20"></option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label for="inputState8">Categorie</label>
-                                        <select id="inputState8" name="serviceEmp" th:field="*{categorie.id}" required class="form-control">
+                                        <select id="inputState8" name="categorie.id" th:field="*{categorie.id}" required class="form-control">
                                             <option th:value="''" th:text="Choisir...">Choisir...</option>
                                             <option th:each="categorie : ${categories}" th:value="${categorie.id}" th:text="${categorie.nomCat}"></option>
                                         </select>

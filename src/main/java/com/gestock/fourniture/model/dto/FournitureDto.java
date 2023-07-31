@@ -1,5 +1,6 @@
 package com.gestock.fourniture.model.dto;
 
+import com.gestock.fourniture.model.entities.Categorie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

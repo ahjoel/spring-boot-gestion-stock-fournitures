@@ -14,15 +14,18 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Commande")
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "code")
     private String codeCom;
+    @Column(name = "date_commande")
     private Date dateCom;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idEmploye", nullable=false)
+    @JoinColumn(name="employe_id", nullable=false)
     private Employe employe;
 
     @OneToMany(mappedBy = "commande", fetch = FetchType.LAZY)

@@ -14,21 +14,26 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Sortie")
 public class Sortie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "code")
     private String codeSort;
+    @Column(name = "date_sortie")
     private Date dateSort;
+    @Column(name = "qte")
     private Double qteSort;
+    @Column(name = "etat")
     private String etatSort;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idemploye", nullable = false)
+    @JoinColumn(name = "employe_id", nullable = false)
     private Employe employe;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idfourniture", nullable = false)
+    @JoinColumn(name = "fourniture_id", nullable = false)
     private Fourniture fourniture;
 
     @OneToMany(mappedBy = "sortie", fetch = FetchType.LAZY)
