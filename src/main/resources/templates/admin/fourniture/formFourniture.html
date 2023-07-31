@@ -61,6 +61,7 @@
                                 th:method="post"
                                 th:action="@{/enregistrerfourniture}"
                                 th:object="${fournitureDto}"
+                                autocomplete="off"
                             >
 
                                 <input type="hidden" class="form-control" name="etatFour" th:field="*{etatFour}">
@@ -69,30 +70,29 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="inputEmail4">Code Fourniture</label>
+                                        <label for="inputEmail4">Code Four</label>
                                         <input type="text" class="form-control" name="codeFour" required th:field="*{codeFour}" id="inputEmail4" placeholder="Code Fourniture">
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputPassword6">Nom Fourniture</label>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputPassword6">Nom Four</label>
                                         <input type="text" class="form-control" name="nomFour" required th:field="*{nomFour}" id="inputPassword6" placeholder="Nom Fourniture">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="inputPassword7">Qte Min Fourniture</label>
-                                        <input type="text" class="form-control" name="qteMinFour" required th:field="*{qteMinFour}" id="inputPassword7" placeholder="Qte Min Fourniture">
+                                        <label for="inputPassword7">Qte Min Four</label>
+                                        <input type="number" class="form-control" name="qteMinFour" required th:field="*{qteMinFour}" id="inputPassword7" placeholder="Qte Min Fourniture">
                                     </div>
-                                </div>
-                                <div class="form-row">
 
                                     <div class="form-group col-md-2">
                                         <label for="inputPassword9">Mesure Fourniture</label>
                                         <select name="serviceEmp" th:field="*{mesureFour}" id="inputPassword9" required class="form-control">
                                             <option th:value="''" th:text="Choisir...">Choisir...</option>
+                                            <option th:value="'UNITE'" th:text="UNITE"></option>
                                             <option th:value="'CARTON'" th:text="CARTON"></option>
                                             <option th:value="'BOITE_10'" th:text="BOITE_10"></option>
                                             <option th:value="'BOITE_20'" th:text="BOITE_20"></option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="inputState8">Categorie</label>
                                         <select id="inputState8" name="categorie.id" th:field="*{categorie.id}" required class="form-control">
                                             <option th:value="''" th:text="Choisir...">Choisir...</option>
@@ -101,8 +101,11 @@
                                     </div>
                                 </div>
 
-                                <button type="reset" class="btn btn-warning">Annuler</button>
-                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                <div class="col text-right">
+                                    <button type="reset" class="btn btn-warning">Annuler</button>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+
                             </form>
                         </div>
                     </div>

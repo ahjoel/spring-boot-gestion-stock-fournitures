@@ -28,7 +28,7 @@ public class FournitureController {
     @GetMapping("/fournitures")
     public String listeFourniture(Model model) {
         var fournitures = fournitureService.listFournitures();
-        System.out.println(fournitures);
+        //System.out.println(fournitures);
         model.addAttribute("fournitures",fournitures);
         return "admin/fourniture/listeFourniture";
     }
@@ -122,7 +122,8 @@ public class FournitureController {
             // Gérez les cas où le voyage n'existe pas ou la suppression échoue
             // Vous pouvez rediriger vers une page d'erreur ou afficher un message d'erreur
             // Ici, nous redirigeons simplement vers la liste des voyages en cas d'erreur
-            return "redirect:/fournitures";
+            String errorMessage = "Une erreur s'est produite lors de la suppression de la fourniture - " + e.getMessage();
+            redirectAttributes.addFlashAttribute("message", errorMessage);
         }
 
         // Rediriger vers la liste des voyages après la suppression réussie

@@ -36,49 +36,67 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Categorie</h1>
-                        <a th:href="@{/categories/list}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-plus fa-sm text-white-50"></i> Liste Categorie</a>
+                    <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show text-left message col-md-4 ml-auto"
+                         role="alert">
+                        [[${message}]]
+                        <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
                     </div>
 
-                    <!-- Basic Card Example -->
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Commandes des fournitures</h1>
+                        <a th:href="@{/formLcommande}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-plus fa-sm text-white-50"></i> Ajouter</a>
+                    </div>
+
+                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Categorie</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Liste Commandes</h6>
                         </div>
                         <div class="card-body">
-                            <form
-                                th:method="post"
-                                th:action="@{/enregistrercategorie}"
-                                th:object="${categorieDTO}"
-                            >
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="inputEmail4">Code Categorie</label>
-                                        <input type="text" class="form-control" name="codeCat" required th:field="*{codeCat}" id="inputEmail4" placeholder="Code Categorie">
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="inputPassword6">Nom Categorie</label>
-                                        <input type="text" class="form-control" name="nomCat" required th:field="*{nomCat}" id="inputPassword6" placeholder="Nom Categorie">
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                        <label for="inputPassword5">Description Categorie</label>
-                                        <input type="text" class="form-control" name="descriptionCat" required th:field="*{descriptionCat}" id="inputPassword5" placeholder="Description Categorie">
-                                    </div>
-                                </div>
-
-                                <div class="col text-right">
-                                    <button type="reset" class="btn btn-warning">Annuler</button>
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                </div>
-                            </form>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Code Commande</th>
+                                        <th>Date Commande</th>
+                                        <th>Nombre(s) Fourniture(s)</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Code Commande</th>
+                                        <th>Date Commande</th>
+                                        <th>Nombre(s) Fourniture(s)</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr th:each="lcommande : ${lcommandes}">
+                                        <td th:text="${lcommandeStat.index + 1}"></td>
+                                        <td th:text="${lcommande.codeCom}"></td>
+                                        <td th:text="${lcommande.dateCom}"></td>
+                                        <td th:text="15"></td>
+                                        <td th:text="En cours"></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
+
 
             </div>
             <!-- End of Main Content -->
@@ -119,6 +137,8 @@
     </div>
 
     <th:block th:replace="fragments/_js_admin.html::js"></th:block>
+
+
 </body>
 
 </html>
