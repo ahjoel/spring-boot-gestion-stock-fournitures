@@ -49,27 +49,8 @@ public class EmployeController {
         return employeService.modifierEmploye(employeDto);
     }
 
-    //@RequestMapping(value="/delprod/{id}", method=RequestMethod.DELETE)
-    //public void deleteProduit(@PathVariable("id") Long id) {
-    //    produitService.deleteProduitById(id);
-    //}
-
-
-    // Traitement de la suppression de l'employe
-    @RequestMapping(value="/suppemp/{id}", method=RequestMethod.DELETE)
-    @PostMapping("employe/delete/{code}")
-    public String deleteEmploye(@PathVariable("code") String codeEmp, RedirectAttributes redirectAttributes) {
-        try {
-            employeService.supprimerEmploye(codeEmp);
-            redirectAttributes.addFlashAttribute("message", "Suppression de l'employé " + codeEmp + " effectuée");
-        } catch (RuntimeException e) {
-            // Gérez les cas où le voyage n'existe pas ou la suppression échoue
-            // Vous pouvez rediriger vers une page d'erreur ou afficher un message d'erreur
-            // Ici, nous redirigeons simplement vers la liste des voyages en cas d'erreur
-            return "redirect:/lemployes";
-        }
-
-        // Rediriger vers la liste des voyages après la suppression réussie
-        return "redirect:/lemployes";
+    @RequestMapping(value="employe/delete/{code}", method=RequestMethod.DELETE)
+    public boolean deleteEmploye(@PathVariable("code") String codeEmp) {
+        return employeService.supprimerEmploye(codeEmp);
     }
 }
