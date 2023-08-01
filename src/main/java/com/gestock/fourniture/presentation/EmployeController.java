@@ -44,7 +44,7 @@ public class EmployeController {
         return getEmployeDtoCodeEmpExist(codeEmp);
     }
 
-    @RequestMapping(value="/modifieremp", method=RequestMethod.PUT)
+    @RequestMapping(value="employe/modifieremp", method=RequestMethod.PUT)
     public boolean modifierEmploye(@RequestBody EmployeDto employeDto) {
         return employeService.modifierEmploye(employeDto);
     }

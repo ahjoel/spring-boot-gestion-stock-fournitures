@@ -46,7 +46,7 @@ public class FournitureService {
         Fourniture fourniture = fournitureMapper.toEntity(fournitureDto);
 
         Fourniture fournitureFound = fournitureRepository.findFournitureByCodeFour(fourniture.getCodeFour())
-                .orElseThrow(() -> new RuntimeException("Code 257 : la fourniture que vous voulez modifier n'existe pas"));
+                .orElseThrow(() -> new RuntimeException("Code 257 : le code fourniture envoye n'existe pas"));
 
         return fournitureMapper.toDto(fournitureFound);
     }
