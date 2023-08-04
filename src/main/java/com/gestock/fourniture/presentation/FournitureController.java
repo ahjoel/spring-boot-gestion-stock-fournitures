@@ -38,10 +38,19 @@ public class FournitureController {
         }
         return fournitureDtoFound;
     }
+    private FournitureDto getFournitureDtoIdExist(Long id) {
+        FournitureDto fournitureDto = FournitureDto.builder().id(id).build();
+        FournitureDto fournitureDtoFound = fournitureService.getFournitutreById(fournitureDto);
 
-    @RequestMapping(value="fourniture/{code}", method = RequestMethod.GET)
-    public FournitureDto afficherFourniture(@PathVariable("code") String codeFour) {
-        return getFournitureDtoCodeFourExist(codeFour);
+        if (fournitureDtoFound == null) {
+            throw new RuntimeException("Code 257 : le code fourniture envoye n'existe pas");
+        }
+        return fournitureDtoFound;
+    }
+
+    @RequestMapping(value="fourniture/{id}", method = RequestMethod.GET)
+    public FournitureDto afficherFourniture(@PathVariable("id") Long id) {
+        return getFournitureDtoIdExist(id);
     }
 
     @RequestMapping(value="fourniture/modifierfour", method=RequestMethod.PUT)
@@ -49,8 +58,8 @@ public class FournitureController {
         return fournitureService.modifierFourniture(fournitureDto);
     }
 
-    @RequestMapping(value="fourniture/delete/{code}", method=RequestMethod.DELETE)
-    public Boolean supprimerFourniture(@PathVariable("code") String codeFour) {
-        return fournitureService.supprimerFourniture(codeFour);
+    @RequestMapping(value="fourniture/delete/{id}", method=RequestMethod.DELETE)
+    public Boolean supprimerFourniture(@PathVariable("id") Long id) {
+        return fournitureService.supprimerFourniture(id);
     }
 }

@@ -51,10 +51,19 @@ public class FournitureService {
         return fournitureMapper.toDto(fournitureFound);
     }
 
+    public FournitureDto getFournitutreById(FournitureDto fournitureDto) {
+        Fourniture fourniture = fournitureMapper.toEntity(fournitureDto);
+
+        Fourniture fournitureFound = fournitureRepository.findById(fourniture.getId())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'id de la fourniture n'existe pas"));
+
+        return fournitureMapper.toDto(fournitureFound);
+    }
+
     public boolean modifierFourniture(FournitureDto fournitureDto){
         Fourniture fourniture = fournitureMapper.toEntity(fournitureDto);
 
-        Fourniture fournitureFound = fournitureRepository.findFournitureByCodeFour(fourniture.getCodeFour())
+        Fourniture fournitureFound = fournitureRepository.findById(fourniture.getId())
                 .orElseThrow(() -> new RuntimeException("Code 257 : la fourniture que vous voulez modifier n'existe pas"));
 
         // Récupération de la catégorie associée à partir de la base de données
@@ -68,8 +77,8 @@ public class FournitureService {
         return true;
     }
 
-    public boolean supprimerFourniture(String codeCat){
-        Fourniture fourniture = fournitureRepository.findFournitureByCodeFour(codeCat)
+    public boolean supprimerFourniture(Long id){
+        Fourniture fourniture = fournitureRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Code 256 : la fourniture que vous voulez supprimer n'existe pas"));
 
         fournitureRepository.deleteById(fourniture.getId());
