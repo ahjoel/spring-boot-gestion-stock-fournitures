@@ -1,17 +1,15 @@
 package com.gestock.fourniture.presentation;
 
 import com.gestock.fourniture.model.dto.CategorieDto;
-import com.gestock.fourniture.model.dto.EmployeDto;
 import com.gestock.fourniture.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class CategorieController {
@@ -39,17 +37,27 @@ public class CategorieController {
         return categorieDtoFound;
     }
 
-    @RequestMapping(value="categorie/{code}", method = RequestMethod.GET)
-    public CategorieDto afficherCategorie(@PathVariable("code") String codeCat) {
-        return getCategorieDtoCodeCatExist(codeCat);
+    private CategorieDto getCategorieDtoIdExist(Long id) {
+        CategorieDto categorieDto = CategorieDto.builder().id(id).build();
+        CategorieDto categorieDtoFound = categorieService.getCategorieById(categorieDto);
+
+        if (categorieDtoFound == null) {
+            throw new RuntimeException("Code 257 : l'id de la categorie que vous voulez modifier n'existe pas");
+        }
+        return categorieDtoFound;
+    }
+
+    @RequestMapping(value="categorie/{id}", method = RequestMethod.GET)
+    public CategorieDto afficherCategorie(@PathVariable("id") Long id) {
+        return getCategorieDtoIdExist(id);
     }
 
     @RequestMapping(value="categorie/modifiercat", method=RequestMethod.PUT)
     public boolean modifierCategorie(@RequestBody CategorieDto categorieDto) {
         return categorieService.modifierCategorie(categorieDto);
     }
-    @RequestMapping(value="categorie/delete/{code}", method=RequestMethod.DELETE)
-    public boolean deleteCategorie(@PathVariable("code") String codeCat) {
-        return categorieService.supprimerCategorie(codeCat);
+    @RequestMapping(value="categorie/delete/{id}", method=RequestMethod.DELETE)
+    public boolean deleteCategorie(@PathVariable("id") Long id) {
+        return categorieService.supprimerCategorie(id);
     }
 }

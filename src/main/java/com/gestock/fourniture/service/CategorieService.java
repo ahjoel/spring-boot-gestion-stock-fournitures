@@ -47,13 +47,25 @@ public class CategorieService {
         return categorieMapper.toDto(categorieFound);
     }
 
-    public boolean modifierCategorie(CategorieDto categorieDto){
+    public CategorieDto getCategorieById(CategorieDto categorieDto) {
         // Convertir CategorieDto en entité Categorie
         Categorie categorie = categorieMapper.toEntity(categorieDto);
 
         // Recherchez le categorie par son code en utilisant le Repository
-        Categorie categorieFound = categorieRepository.findCategorieByCodeCat(categorie.getCodeCat())
-                .orElseThrow(() -> new RuntimeException("Code 257 : la categorie que vous voulez modifier n'existe pas"));
+        Categorie categorieFound = categorieRepository.findById(categorie.getId())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'id introuvable dans la base"));
+
+        // Convertir l'entité Categorie en CategorieDto et le renvoyer
+        return categorieMapper.toDto(categorieFound);
+    }
+
+    public boolean modifierCategorie(CategorieDto categorieDto){
+        // Convertir CategorieDto en entité Categorie
+        Categorie categorie = categorieMapper.toEntity(categorieDto);
+
+        // Recherchez le categorie par son ID en utilisant le Repository
+        Categorie categorieFound = categorieRepository.findCategorieById(categorie.getId())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'id de la categorie que vous voulez modifier n'existe pas"));
 
         //Rassemble tout ce qu'il a envoyé à modifier dans voyageDto, le passe a l'entite voyage
         categorieMapper.copy(categorieDto, categorieFound);
@@ -64,8 +76,8 @@ public class CategorieService {
         return true;
     }
 
-    public boolean supprimerCategorie(String codeCat){
-        Categorie categorie = categorieRepository.findCategorieByCodeCat(codeCat)
+    public boolean supprimerCategorie(Long id){
+        Categorie categorie = categorieRepository.findCategorieById(id)
                 .orElseThrow(()->new RuntimeException("Code 256 : la categorie que vous voulez supprimer n'existe pas"));
 
         categorieRepository.deleteById(categorie.getId());

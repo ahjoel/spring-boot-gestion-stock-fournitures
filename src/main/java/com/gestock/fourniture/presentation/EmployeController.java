@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class EmployeController {
@@ -39,9 +39,19 @@ public class EmployeController {
         return employeDtoFound;
     }
 
-    @RequestMapping(value="employe/{code}", method = RequestMethod.GET)
-    public EmployeDto afficherEmploye(@PathVariable("code") String codeEmp) {
-        return getEmployeDtoCodeEmpExist(codeEmp);
+    private EmployeDto getEmployeDtoIdExist(Long id) {
+        EmployeDto employeDto = EmployeDto.builder().id(id).build();
+        EmployeDto employeDtoFound = employeService.getEmployeById(employeDto);
+
+        if (employeDtoFound == null) {
+            throw new RuntimeException("Code 257 : l'id de l'employe que vous voulez n'existe pas");
+        }
+        return employeDtoFound;
+    }
+
+    @RequestMapping(value="employe/{id}", method = RequestMethod.GET)
+    public EmployeDto afficherEmploye(@PathVariable("id") Long id) {
+        return getEmployeDtoIdExist(id);
     }
 
     @RequestMapping(value="employe/modifieremp", method=RequestMethod.PUT)
@@ -49,8 +59,8 @@ public class EmployeController {
         return employeService.modifierEmploye(employeDto);
     }
 
-    @RequestMapping(value="employe/delete/{code}", method=RequestMethod.DELETE)
-    public boolean deleteEmploye(@PathVariable("code") String codeEmp) {
-        return employeService.supprimerEmploye(codeEmp);
+    @RequestMapping(value="employe/delete/{id}", method=RequestMethod.DELETE)
+    public boolean deleteEmploye(@PathVariable("id") Long id) {
+        return employeService.supprimerEmploye(id);
     }
 }

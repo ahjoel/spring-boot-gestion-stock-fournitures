@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class FournitureDto {
+    private Long id;
     private String codeFour;
     private String nomFour;
     private String mesureFour;

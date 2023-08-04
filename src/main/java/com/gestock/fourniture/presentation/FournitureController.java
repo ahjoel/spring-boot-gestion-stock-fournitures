@@ -1,9 +1,6 @@
 package com.gestock.fourniture.presentation;
 
-import com.gestock.fourniture.model.dto.CategorieDto;
-import com.gestock.fourniture.model.dto.EmployeDto;
 import com.gestock.fourniture.model.dto.FournitureDto;
-import com.gestock.fourniture.model.entities.Categorie;
 import com.gestock.fourniture.service.CategorieService;
 import com.gestock.fourniture.service.FournitureService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class FournitureController {
