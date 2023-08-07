@@ -8,8 +8,8 @@ import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.springframework.stereotype.Component;
 
-
-@Mapper(componentModel="spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
+@Component
+@Mapper(componentModel="spring")
 public interface EmployeMapper {
     Employe toEntity(EmployeDto employeDto);
     EmployeDto toDto(Employe employe);
