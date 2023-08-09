@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Commande {
     @Column(name = "code")
     private String codeCom;
     @Column(name = "date_commande")
-    private Date dateCom;
+    private LocalDate dateCom;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="employe_id", nullable=false)

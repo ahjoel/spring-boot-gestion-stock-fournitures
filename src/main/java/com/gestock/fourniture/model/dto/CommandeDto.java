@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +15,6 @@ import java.util.Date;
 public class CommandeDto {
     public Long id;
     private String codeCom;
-    private Date dateCom;
+    private LocalDate dateCom;
+    private EmployeDto employe;
 }

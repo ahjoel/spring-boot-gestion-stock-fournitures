@@ -3,6 +3,8 @@ package com.gestock.fourniture.service;
 import com.gestock.fourniture.model.dto.CategorieDto;
 import com.gestock.fourniture.model.dto.CommandeDto;
 import com.gestock.fourniture.model.entities.Categorie;
+import com.gestock.fourniture.model.entities.Commande;
+import com.gestock.fourniture.model.entities.LigneCommande;
 import com.gestock.fourniture.repository.CategorieRepository;
 import com.gestock.fourniture.repository.CommandeRepository;
 import com.gestock.fourniture.service.mapper.CategorieMapper;
@@ -25,9 +27,10 @@ public class CommandeService {
         return commandeRepository.findAll().stream().map(commandeMapper::toDto).collect(Collectors.toList());
     }
 
-    public Long ajouterCommande(CommandeDto commandeDto){
+    public CommandeDto ajouterCommande(CommandeDto commandeDto){
         checkCodeComAlreadyUsed(commandeDto);
-        return commandeRepository.save(commandeMapper.toEntity(commandeDto)).getId();
+        Commande commande = commandeRepository.save(commandeMapper.toEntity(commandeDto));
+        return commandeMapper.toDto(commande);
     }
 
     private void checkCodeComAlreadyUsed(CommandeDto commandeDto) {
@@ -36,4 +39,21 @@ public class CommandeService {
         }
     }
 
+    public CommandeDto getCommandeById(CommandeDto commandeDto) {
+        Commande commande = commandeMapper.toEntity(commandeDto);
+
+        Commande commmandeFound = commandeRepository.findById(commande.getId())
+                .orElseThrow(() -> new RuntimeException("Code 257 : l'id introuvable dans la base"));
+
+        return commandeMapper.toDto(commmandeFound);
+    }
+
+    public boolean supprimerCommande(Long id){
+        Commande commande = commandeRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("Code 256 : la commande que vous voulez supprimer n'existe pas"));
+
+        commandeRepository.deleteById(commande.getId());
+
+        return true;
+    }
 }
