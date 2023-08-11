@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Livraison {
     @Column(name = "code")
     private String codeLiv;
     @Column(name = "date_livraison")
-    private Date dateLiv;
+    private LocalDate dateLiv;
     @Column(name = "tva")
     private Double tvaLiv;
     @Column(name = "fournisseur")
