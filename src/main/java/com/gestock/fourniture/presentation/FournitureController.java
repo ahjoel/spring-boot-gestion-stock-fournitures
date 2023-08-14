@@ -16,9 +16,6 @@ public class FournitureController {
     @Autowired
     FournitureService fournitureService;
 
-    @Autowired
-    CategorieService categorieService;
-
     @RequestMapping(path="fournitures", method = RequestMethod.GET)
     public List<FournitureDto> listeFourniture() {
         return fournitureService.listFournitures();

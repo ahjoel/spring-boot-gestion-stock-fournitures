@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,9 +22,9 @@ public class Mouvement {
     @Column(name = "code")
     private String codeMouv;
     @Column(name = "date_mouvement")
-    private Date datemouv;
+    private LocalDate datemouv;
     @Column(name = "date_inventaire")
-    private Date dateInventaire;
+    private LocalDate dateInventaire;
     @Column(name = "qte")
     private Double qteMouv;
     @Column(name = "nature")
@@ -33,7 +34,7 @@ public class Mouvement {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lignelivraison_id", nullable = true)
-    private LigneLivraison ligneLivraison;
+    private LigneLivraison lignelivraison;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sortie_id", nullable = true)

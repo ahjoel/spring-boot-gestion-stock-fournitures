@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,7 +23,7 @@ public class Sortie {
     @Column(name = "code")
     private String codeSort;
     @Column(name = "date_sortie")
-    private Date dateSort;
+    private LocalDate dateSort;
     @Column(name = "qte")
     private Double qteSort;
     @Column(name = "etat")

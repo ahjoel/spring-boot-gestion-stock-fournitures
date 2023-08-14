@@ -37,7 +37,7 @@ public class LigneLivraison {
     @JoinColumn(name = "fourniture_id", nullable = false)
     private Fourniture fourniture;
 
-    @OneToMany(mappedBy = "ligneLivraison", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "lignelivraison", fetch = FetchType.LAZY)
     private Collection<Mouvement> mouvements;
 
 }
