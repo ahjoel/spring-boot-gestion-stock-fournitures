@@ -36,6 +36,10 @@ public class LigneCommandeService {
         return ligneCommandeRepository.findAll().stream().map(ligneCommandeMapper::toDto).collect(Collectors.toList());
     }
 
+    public List<LigneCommandeDto> trierLigneCommandeParFournitureNonLivre() {
+        return ligneCommandeRepository.trierLigneCommandeParFournitureNonLivre().stream().map(ligneCommandeMapper::toDto).collect(Collectors.toList());
+    }
+
     public Long ajouterLigneCommande(LigneCommandeDto ligneCommandeDto){
         //checkCodeComAlreadyUsed(commandeDto);
         return ligneCommandeRepository.save(ligneCommandeMapper.toEntity(ligneCommandeDto)).getId();
@@ -78,5 +82,9 @@ public class LigneCommandeService {
         ligneCommandeRepository.deleteById(ligneCommande.getId());
 
         return true;
+    }
+
+    public void markAsLivree(Long id) {
+        ligneCommandeRepository.updateEtatToLivreeById(id);
     }
 }

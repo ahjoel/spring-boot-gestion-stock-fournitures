@@ -10,7 +10,7 @@ import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Mapper(componentModel="spring")
 public interface FournitureMapper {
     Fourniture toEntity(FournitureDto fournitureDto);

@@ -22,6 +22,6 @@ public class LigneLivraisonDto {
     private Double prixLivraison;
     private String etatLivraison;
     private LivraisonDto livraison;
-    private LigneCommandeDto ligneCommande;
+    private LigneCommandeDto lignecommande;
     private FournitureDto fourniture;
 }

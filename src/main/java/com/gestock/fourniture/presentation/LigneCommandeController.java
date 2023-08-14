@@ -30,6 +30,11 @@ public class LigneCommandeController {
         return ligneCommandeService.listLigneCommandes();
     }
 
+     @RequestMapping(path="lignecommandes/nonlivree", method = RequestMethod.GET)
+    public List<LigneCommandeDto> listeLigneCommandeLivree() {
+        return ligneCommandeService.trierLigneCommandeParFournitureNonLivre();
+    }
+
     @RequestMapping(value="lignecommande/addlcom", method = RequestMethod.POST)
     public Long enregistrerLigneCommande(@RequestBody LigneCommandeDto ligneCommandeDto){
         return ligneCommandeService.ajouterLigneCommande(ligneCommandeDto);
@@ -58,5 +63,10 @@ public class LigneCommandeController {
     @RequestMapping(value="lignecommande/delete/{id}", method=RequestMethod.DELETE)
     public Boolean supprimerLigneCommande(@PathVariable("id") Long id) {
         return ligneCommandeService.supprimerLigneCommande(id);
+    }
+
+    @RequestMapping(value="lignecommande/etatcmd/{id}", method=RequestMethod.PUT)
+    public void updateLigneCommandeEtatToLivree(@PathVariable("id") Long id){
+        ligneCommandeService.markAsLivree(id);
     }
 }

@@ -12,7 +12,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Mapper(componentModel="spring")
 public interface LigneLivraisonMapper {
     LigneLivraison toEntity(LigneLivraisonDto livraisonDto);

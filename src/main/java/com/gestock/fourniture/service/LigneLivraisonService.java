@@ -54,7 +54,7 @@ public class LigneLivraisonService {
                 .orElseThrow(() -> new RuntimeException("Code 257 : la ligne livraison que vous voulez modifier n'existe pas"));
 
         // Récupération de la Ligne commande associée à partir de la base de données
-        LigneCommande ligneCommande = ligneCommandeRepository.findById(ligneLivraison.getLigneCommande().getId())
+        LigneCommande ligneCommande = ligneCommandeRepository.findById(ligneLivraison.getLignecommande().getId())
                 .orElseThrow(() -> new RuntimeException("Code 257 : Ligne commande introuvable"));
 
         // Récupération de la fourniture associée à partir de la base de données

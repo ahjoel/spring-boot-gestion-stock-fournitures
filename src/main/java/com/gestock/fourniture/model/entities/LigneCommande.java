@@ -31,6 +31,6 @@ public class LigneCommande {
     @JoinColumn(name = "commande_id", nullable = false)
     private Commande commande;
 
-    @OneToMany(mappedBy = "ligneCommande", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "lignecommande", fetch = FetchType.LAZY)
     private Collection<LigneLivraison> ligneLivraisons;
 }

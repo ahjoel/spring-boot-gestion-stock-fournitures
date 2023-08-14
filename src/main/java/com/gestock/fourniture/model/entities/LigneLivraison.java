@@ -31,7 +31,7 @@ public class LigneLivraison {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lignecommande_id", nullable = false)
-    private LigneCommande ligneCommande;
+    private LigneCommande lignecommande;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fourniture_id", nullable = false)
