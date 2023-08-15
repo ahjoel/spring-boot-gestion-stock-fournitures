@@ -35,7 +35,7 @@ public class MouvementService {
     }
 
     public Long ajouterMouvement(MouvementDto mouvementDto){
-        checkCodeMouvAlreadyUsed(mouvementDto);
+        //checkCodeMouvAlreadyUsed(mouvementDto);
         return mouvementRepository.save(mouvementMapper.toEntity(mouvementDto)).getId();
     }
 
@@ -95,5 +95,25 @@ public class MouvementService {
         mouvementRepository.deleteById(mouvement.getId());
 
         return true;
+    }
+
+    public Long getTotalQuantiteByFournitureId(Long fournitureId) {
+        return mouvementRepository.sumQuantiteByFournitureId(fournitureId);
+    }
+
+    public Long getTotalCommandeNonLiv() {
+        return mouvementRepository.sumQuantiteTotalCommandeNonLiv();
+    }
+
+    public Long getTotalCommandeLiv() {
+        return mouvementRepository.sumQuantiteTotalCommandeLiv();
+    }
+
+    public Long getTotalQuantiteFournitureEnregistrer() {
+        return mouvementRepository.sumQuantiteTotalFournitureLiv();
+    }
+
+    public Long getTotalQuantiteSortie() {
+        return mouvementRepository.sumQuantiteTotalSortie();
     }
 }

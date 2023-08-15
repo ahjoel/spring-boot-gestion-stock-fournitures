@@ -50,4 +50,29 @@ public class MouvementController {
     public Boolean supprimerMouvement(@PathVariable("id") Long id) {
         return mouvementService.supprimerMouvement(id);
     }
+
+    @RequestMapping(value="mouvement/fourniture/{id}", method=RequestMethod.GET)
+    public Long getQuantiteDispoByFournitureId(@PathVariable("id") Long id){
+        return mouvementService.getTotalQuantiteByFournitureId(id);
+    }
+
+    @RequestMapping(value="mouvement/commandenonliv", method=RequestMethod.GET)
+    public Long getQuantiteCommandeNonLiv(){
+        return mouvementService.getTotalCommandeNonLiv();
+    }
+
+    @RequestMapping(value="mouvement/commandeliv", method=RequestMethod.GET)
+    public Long getQuantiteCommandeLiv(){
+        return mouvementService.getTotalCommandeLiv();
+    }
+
+    @RequestMapping(value="mouvement/fournitureliv", method=RequestMethod.GET)
+    public Long getQuantiteFournitureLiv(){
+        return mouvementService.getTotalQuantiteFournitureEnregistrer();
+    }
+
+    @RequestMapping(value="mouvement/fournituresort", method=RequestMethod.GET)
+    public Long getQuantiteFournitureSort(){
+        return mouvementService.getTotalQuantiteSortie();
+    }
 }
