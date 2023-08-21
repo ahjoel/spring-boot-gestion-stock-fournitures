@@ -1,6 +1,7 @@
 package com.gestock.fourniture.rest;
 
 import com.gestock.fourniture.model.dto.CategorieDto;
+import com.gestock.fourniture.rest.ressource.CategorieController;
 import com.gestock.fourniture.service.CategorieService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
