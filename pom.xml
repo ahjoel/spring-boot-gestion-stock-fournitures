@@ -14,7 +14,7 @@
 	<name>fourniture</name>
 	<description>Projet Spring Boot de gestion des fournitures de bureaux</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<org.projectlombok.version>1.18.28</org.projectlombok.version>
 	</properties>
@@ -105,7 +105,6 @@
 				<configuration>
 					<source>17</source>
 					<target>17</target>
-					<release>8</release>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
