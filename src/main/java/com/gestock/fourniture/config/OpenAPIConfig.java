@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -43,6 +44,7 @@ public class OpenAPIConfig {
                 .description("Cet API expose les endpoints permettant la gestion de stock des fournitures de bureaux en entreprise.");
         //.license(mitLicense);
 
-        return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
+        //return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
+        return new OpenAPI().info(info).servers(Arrays.asList(devServer, prodServer));
     }
 }
