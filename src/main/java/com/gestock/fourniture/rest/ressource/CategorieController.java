@@ -1,4 +1,4 @@
-package com.gestock.fourniture.presentation;
+package com.gestock.fourniture.rest.ressource;
 
 import com.gestock.fourniture.model.dto.CategorieDto;
 import com.gestock.fourniture.service.CategorieService;

@@ -1,13 +1,9 @@
-package com.gestock.fourniture.presentation;
+package com.gestock.fourniture.rest.ressource;
 
 import com.gestock.fourniture.model.dto.EmployeDto;
-import com.gestock.fourniture.model.entities.Employe;
 import com.gestock.fourniture.service.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 

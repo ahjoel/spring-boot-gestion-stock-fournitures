@@ -1,6 +1,5 @@
-package com.gestock.fourniture.presentation;
+package com.gestock.fourniture.rest;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gestock.fourniture.model.dto.EmployeDto;
 import com.gestock.fourniture.service.EmployeService;
@@ -12,21 +11,26 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @WebMvcTest(EmployeController.class)
 class EmployeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private EmployeMapper employeMapper;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -59,8 +63,24 @@ class EmployeControllerTest {
     }
 
     @Test
-    void testEnregistrerEmploye() throws JsonProcessingException {
+    void testEnregistrerEmploye() throws Exception {
+        // Créez un objet EmployeDto de test
+        EmployeDto employeDto = EmployeDto.builder()
+                .codeEmp("EMP003")
+                .nomEmp("Doe")
+                .prenomEmp("Jane")
+                .serviceEmp("RH")
+                .build();
 
+        // Mock du service pour renvoyer l'employé enregistré
+        when(employeService.ajouterEmploye(any(EmployeDto.class))).thenReturn(employeDto.getId());
+
+        // Effectuez la requête HTTP POST pour enregistrer l'employé
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/employe/addemp")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(String.valueOf(employeMapper.toEntity(employeDto))))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("employeDto.getId()" ));
     }
 
     @Test

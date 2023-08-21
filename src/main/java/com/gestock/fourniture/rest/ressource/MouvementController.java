@@ -1,9 +1,7 @@
-package com.gestock.fourniture.presentation;
+package com.gestock.fourniture.rest.ressource;
 
 import com.gestock.fourniture.model.dto.MouvementDto;
-import com.gestock.fourniture.model.dto.SortieDto;
 import com.gestock.fourniture.service.MouvementService;
-import com.gestock.fourniture.service.SortieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

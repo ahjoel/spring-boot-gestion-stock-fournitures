@@ -1,8 +1,6 @@
-package com.gestock.fourniture.presentation;
+package com.gestock.fourniture.rest.ressource;
 
-import com.gestock.fourniture.model.dto.CommandeDto;
 import com.gestock.fourniture.model.dto.LivraisonDto;
-import com.gestock.fourniture.service.CommandeService;
 import com.gestock.fourniture.service.LivraisonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
