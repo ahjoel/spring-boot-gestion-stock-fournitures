@@ -9,6 +9,7 @@ import com.gestock.fourniture.service.mapper.SortieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -115,5 +116,9 @@ public class MouvementService {
 
     public Long getTotalQuantiteSortie() {
         return mouvementRepository.sumQuantiteTotalSortie();
+    }
+
+    public List<Object[]> getSituationMensuelStock(LocalDate dateDebut, LocalDate dateFin) {
+        return mouvementRepository.getSituationStockSurPeriode(dateDebut, dateFin);
     }
 }

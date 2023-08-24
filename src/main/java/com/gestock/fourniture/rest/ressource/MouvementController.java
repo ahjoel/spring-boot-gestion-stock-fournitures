@@ -5,6 +5,7 @@ import com.gestock.fourniture.service.MouvementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -72,5 +73,10 @@ public class MouvementController {
     @RequestMapping(value="mouvement/fournituresort", method=RequestMethod.GET)
     public Long getQuantiteFournitureSort(){
         return mouvementService.getTotalQuantiteSortie();
+    }
+
+    @RequestMapping(value="mouvement/periode/{deb}/{fin}", method=RequestMethod.GET)
+    public List<Object[]> getSituationPerdiode(@PathVariable("deb") LocalDate deb, @PathVariable("fin") LocalDate fin) {
+        return mouvementService.getSituationMensuelStock(deb, fin);
     }
 }
