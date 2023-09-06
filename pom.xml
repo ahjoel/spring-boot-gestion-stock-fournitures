@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gestock</groupId>
-	<artifactId>fourniture</artifactId>
+	<artifactId>fournitures</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fourniture</name>
-	<description>Projet Spring Boot de gestion des fournitures de bureaux</description>
+	<name>fournitures</name>
+	<description>Projet Spring Boot de Gestion des fournitures de bureaux</description>
 	<properties>
 		<java.version>17</java.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
