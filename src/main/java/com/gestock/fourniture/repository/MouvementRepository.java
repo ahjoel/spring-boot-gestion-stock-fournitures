@@ -40,20 +40,20 @@ public interface MouvementRepository extends JpaRepository<Mouvement, Long> {
     Long sumQuantiteTotalCommandeLiv();
 
     @Query("SELECT\n" +
-            "    COUNT(lv.fourniture.id) as FournitureLiv\n" +
+            "    SUM(lv.qteMouv) as FournitureLiv\n" +
             "FROM\n" +
             "    LigneLivraison lv\n" +
             "WHERE\n" +
-            "    lv.etatLivraison = 'NON-VA'")
+            "    lv.etatLivraison = 'VA'")
     Long sumQuantiteTotalFournitureLiv();
 
 
     @Query("SELECT\n" +
-            "    COUNT(s.fourniture.id) as FournitureSort\n" +
+            "    SUM(s.qteSort) as FournitureSort\n" +
             "FROM\n" +
             "    Sortie s\n" +
             "WHERE\n" +
-            "    s.etatSort = 'NON-VA'")
+            "    s.etatSort = 'VA'")
     Long sumQuantiteTotalSortie();
 
     @Query("SELECT f.id AS id, f.nomFour, \n" +
