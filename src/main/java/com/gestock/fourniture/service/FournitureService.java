@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,7 @@ public class FournitureService {
     FournitureMapper fournitureMapper;
 
     public List<FournitureDto> listFournitures(){
-        return fournitureRepository.findAll().stream().map(fournitureMapper::toDto).collect(Collectors.toList());
+        return fournitureRepository.findAll().stream().sorted(Comparator.comparingLong(Fourniture::getId).reversed()).map(fournitureMapper::toDto).collect(Collectors.toList());
     }
 
     public Long ajouterFourniture(FournitureDto fournitureDto){

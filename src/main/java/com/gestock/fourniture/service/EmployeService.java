@@ -1,12 +1,14 @@
 package com.gestock.fourniture.service;
 
 import com.gestock.fourniture.model.dto.EmployeDto;
+import com.gestock.fourniture.model.entities.Categorie;
 import com.gestock.fourniture.model.entities.Employe;
 import com.gestock.fourniture.repository.EmployeRepository;
 import com.gestock.fourniture.service.mapper.EmployeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ public class EmployeService {
     private EmployeMapper employeMapper;
 
     public List<EmployeDto> listEmployes(){
-        return employeRepository.findAll().stream().map(employeMapper::toDto).collect(Collectors.toList());
+        return employeRepository.findAll().stream().sorted(Comparator.comparingLong(Employe::getId).reversed()).map(employeMapper::toDto).collect(Collectors.toList());
     }
 
     public Long ajouterEmploye(EmployeDto employeDto){

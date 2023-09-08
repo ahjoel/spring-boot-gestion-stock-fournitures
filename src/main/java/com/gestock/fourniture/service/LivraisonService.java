@@ -2,6 +2,7 @@ package com.gestock.fourniture.service;
 
 import com.gestock.fourniture.model.dto.CommandeDto;
 import com.gestock.fourniture.model.dto.LivraisonDto;
+import com.gestock.fourniture.model.entities.Categorie;
 import com.gestock.fourniture.model.entities.Commande;
 import com.gestock.fourniture.model.entities.Livraison;
 import com.gestock.fourniture.repository.LivraisonRepository;
@@ -9,6 +10,7 @@ import com.gestock.fourniture.service.mapper.LivraisonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class LivraisonService {
     LivraisonMapper livraisonMapper;
 
     public List<LivraisonDto> listLivraisons(){
-        return livraisonRepository.findAll().stream().map(livraisonMapper::toDto).collect(Collectors.toList());
+        return livraisonRepository.findAll().stream().sorted(Comparator.comparingLong(Livraison::getId).reversed()).map(livraisonMapper::toDto).collect(Collectors.toList());
     }
 
     public LivraisonDto ajouterLivraison(LivraisonDto livraisonDto){

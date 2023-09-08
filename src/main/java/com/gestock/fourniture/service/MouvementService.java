@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ public class MouvementService {
     MouvementMapper mouvementMapper;
 
     public List<MouvementDto> listMouvements(){
-        return mouvementRepository.findAll().stream().map(mouvementMapper::toDto).collect(Collectors.toList());
+        return mouvementRepository.findAll().stream().sorted(Comparator.comparingLong(Mouvement::getId).reversed()).map(mouvementMapper::toDto).collect(Collectors.toList());
     }
 
     public Long ajouterMouvement(MouvementDto mouvementDto){

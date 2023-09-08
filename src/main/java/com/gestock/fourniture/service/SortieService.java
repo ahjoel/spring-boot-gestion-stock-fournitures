@@ -15,6 +15,7 @@ import com.gestock.fourniture.service.mapper.SortieMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class SortieService {
     SortieMapper sortieMapper;
 
     public List<SortieDto> listSorties(){
-        return sortieRepository.findAll().stream().map(sortieMapper::toDto).collect(Collectors.toList());
+        return sortieRepository.findAll().stream().sorted(Comparator.comparingLong(Sortie::getId).reversed()).map(sortieMapper::toDto).collect(Collectors.toList());
     }
 
     public Long ajouterSortie(SortieDto sortieDto){

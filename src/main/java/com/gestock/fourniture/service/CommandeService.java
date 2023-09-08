@@ -12,6 +12,7 @@ import com.gestock.fourniture.service.mapper.CommandeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class CommandeService {
     CommandeMapper commandeMapper;
 
     public List<CommandeDto> listCommandes(){
-        return commandeRepository.findAll().stream().map(commandeMapper::toDto).collect(Collectors.toList());
+        return commandeRepository.findAll().stream().sorted(Comparator.comparingLong(Commande::getId).reversed()).map(commandeMapper::toDto).collect(Collectors.toList());
     }
 
     public CommandeDto ajouterCommande(CommandeDto commandeDto){

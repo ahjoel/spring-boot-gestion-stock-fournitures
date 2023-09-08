@@ -15,6 +15,7 @@ import com.gestock.fourniture.service.mapper.LigneCommandeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,7 @@ public class LigneCommandeService {
     LigneCommandeMapper ligneCommandeMapper;
 
     public List<LigneCommandeDto> listLigneCommandes(){
-        return ligneCommandeRepository.findAll().stream().map(ligneCommandeMapper::toDto).collect(Collectors.toList());
+        return ligneCommandeRepository.findAll().stream().sorted(Comparator.comparingLong(LigneCommande::getId).reversed()).map(ligneCommandeMapper::toDto).collect(Collectors.toList());
     }
 
     public List<LigneCommandeDto> trierLigneCommandeParFournitureNonLivre() {

@@ -16,12 +16,6 @@ public class LigneCommandeController {
     @Autowired
     LigneCommandeService ligneCommandeService;
 
-    @Autowired
-    CommandeService commandeService;
-
-    @Autowired
-    FournitureService fournitureService;
-
     @RequestMapping(path="lignecommandes", method = RequestMethod.GET)
     public List<LigneCommandeDto> listeLigneCommande() {
         return ligneCommandeService.listLigneCommandes();

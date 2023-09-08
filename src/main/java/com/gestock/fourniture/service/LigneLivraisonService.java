@@ -9,6 +9,7 @@ import com.gestock.fourniture.service.mapper.LigneLivraisonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,7 @@ public class LigneLivraisonService {
     LigneLivraisonMapper ligneLivraisonMapper;
 
     public List<LigneLivraisonDto> listLigneLivraisons(){
-        return ligneLivraisonRepository.findAll().stream().map(ligneLivraisonMapper::toDto).collect(Collectors.toList());
+        return ligneLivraisonRepository.findAll().stream().sorted(Comparator.comparingLong(LigneLivraison::getId).reversed()).map(ligneLivraisonMapper::toDto).collect(Collectors.toList());
     }
 
     public Long ajouterLigneLivraison(LigneLivraisonDto ligneLivraisonDto){
