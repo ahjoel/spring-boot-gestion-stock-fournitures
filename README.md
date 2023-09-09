@@ -32,11 +32,15 @@ mvn clean install spring-boot:run
 
 ### Lancement de la navigateur
 
-- Dans le navigateur, aller à la page : http://localhost:8080/swagger-ui.html
+- Dans le navigateur en local, pour voir les APIs de l'application aller à la page : http://localhost:8080/swagger-ui.html
+- Documentation des APIs de l'application en ligne avec Swagger : https://stockfournituresbureaux.onrender.com/swagger-ui.html
+- Vous pouvez également utiliser POSTMAN pour le test des APIs
 
 ### Structure de l'application
 
-- Architecture en couche
+- Architecture microservice
+
+![img_1.png](img_1.png)
 - Design Pattern : DTO
 - Integration de test unitaire
 
