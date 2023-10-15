@@ -30,6 +30,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER).build();
         checkPseudoAlreadyUsed(request);
+        checkEmailAlreadyUsed(request);
         userRepository.save(user);
         var jwt = jwtService.generateToken(user);
         return JwtAuthenticationResponse.builder().token(jwt).build();
@@ -38,6 +39,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private void checkPseudoAlreadyUsed(SignUpRequest request) {
         if (userRepository.existsByPseudoIgnoreCase(request.getPseudo())){
             throw new CustomException("Code 5268", "Il existe déjà un utilisateur avec ce pseudo", HttpStatus.FORBIDDEN);
+        }
+    }
+
+    private void checkEmailAlreadyUsed(SignUpRequest request) {
+        if (userRepository.existsByEmailIgnoreCase(request.getEmail())){
+            throw new CustomException("Code 5268", "Il existe déjà un utilisateur avec ce mail", HttpStatus.FORBIDDEN);
         }
     }
 
